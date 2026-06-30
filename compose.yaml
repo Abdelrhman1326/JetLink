@@ -1,0 +1,9 @@
+﻿services:
+    db:
+      image: postgres:latest
+      environment:
+        POSTGRES_DB: link_shortener_db
+        POSTGRES_USER: shortener_user
+        POSTGRES_PASSWORD: Y0PxT6OjPduAtR4ucks8
+      ports:
+        - "5433:5432" # Changed host port to 5433
