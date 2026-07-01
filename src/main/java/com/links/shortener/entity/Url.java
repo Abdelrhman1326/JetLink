@@ -1,38 +1,26 @@
 ﻿package com.links.shortener.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "URLs")
+@Table(name = "urls")
 public class Url {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String originalUrl;
-    private long shortenedCode;
 
-    // constructors
-    public Url() {
+    public Url() {}
 
-    }
-    public Url(String originalUrl, long shortenedCode) {
-        this.originalUrl = originalUrl;
-        this.shortenedCode = shortenedCode;
-    }
-
-    // getters
-    public String getOriginalUrl() {
-        return originalUrl;
-    }
-    public long getShortenedCode() {
-        return shortenedCode;
-    }
-
-    // setters
-    public void setOriginalUrl(String originalUrl) {
+    public Url(String originalUrl) {
         this.originalUrl = originalUrl;
     }
-    public void setShortenedCode(long shortenedCode) {
-        this.shortenedCode = shortenedCode;
-    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getOriginalUrl() { return originalUrl; }
+    public void setOriginalUrl(String originalUrl) { this.originalUrl = originalUrl; }
 }
