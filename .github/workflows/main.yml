@@ -1,5 +1,4 @@
 name: Keep HF Backend Alive
-
 on:
   schedule:
     - cron: '*/10 * * * *'
@@ -11,5 +10,6 @@ jobs:
     steps:
       - name: Ping HF backend
         run: |
-          curl -s https://jettlink-jetlink.hf.space/api/health > /dev/null
-          echo "Pinged successfully"
+          echo "Response from API:"
+          curl -sS https://jettlink-jetlink.hf.space/api/health
+          echo -e "\nPinged successfully"
