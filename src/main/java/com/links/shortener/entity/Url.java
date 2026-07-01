@@ -1,10 +1,12 @@
-﻿package com.links.shortener.entity;
+package com.links.shortener.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "urls")
-public class Url {
+public class Url implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

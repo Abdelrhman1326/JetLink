@@ -32,6 +32,7 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-test'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
     testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

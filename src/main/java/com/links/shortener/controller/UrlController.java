@@ -1,5 +1,6 @@
-﻿package com.links.shortener.controller;
+package com.links.shortener.controller;
 
+import com.links.shortener.DTO.UrlRequest;
 import com.links.shortener.entity.Url;
 import com.links.shortener.service.UrlService;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,7 @@ import java.net.URI;
 @RequestMapping
 public class UrlController {
     private final UrlService urlService;
+
     public UrlController(UrlService urlService) {
         this.urlService = urlService;
     }
@@ -22,8 +24,8 @@ public class UrlController {
 
     // create new short link
     @PostMapping("/api/v1/urls")
-    public ResponseEntity<String> shortenUrl(@RequestBody String originalUrl) {
-        String shortCode = urlService.shortenUrl(originalUrl);
+    public ResponseEntity<String> shortenUrl(@RequestBody UrlRequest request) {
+        String shortCode = urlService.shortenUrl(request.getOriginalUrl());
         return ResponseEntity.status(HttpStatus.CREATED).body(baseUrl + "/" + shortCode);
     }
 
@@ -32,14 +34,13 @@ public class UrlController {
     public ResponseEntity<Void> redirectToOriginalUrl(@PathVariable String shortCode) {
         Url url = urlService.getOriginalUrl(shortCode);
 
-        // Perform an HTTP 302 redirect to the destination URL
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(URI.create(url.getOriginalUrl()))
                 .build();
     }
 
     // remove short link
-    @DeleteMapping("api/v1/urls/{shortCode}")
+    @DeleteMapping("/api/v1/urls/{shortCode}")
     public ResponseEntity<Void> deleteUrl(@PathVariable String shortCode) {
         urlService.removeOriginalUrl(shortCode);
         return ResponseEntity.noContent().build();

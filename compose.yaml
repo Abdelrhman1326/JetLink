@@ -7,3 +7,12 @@
         POSTGRES_PASSWORD: Y0PxT6OjPduAtR4ucks8
       ports:
         - "5433:5432" # Changed host port to 5433
+
+    redis:
+      image: redis:7-alpine
+      container_name: link-shortener-redis
+      ports:
+        - "6379:6379"
+      # Pass the LRU configurations directly as command arguments
+      command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
+      restart: always

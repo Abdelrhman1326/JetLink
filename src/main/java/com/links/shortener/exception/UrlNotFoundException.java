@@ -1,4 +1,4 @@
-﻿package com.links.shortener.exception;
+package com.links.shortener.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
