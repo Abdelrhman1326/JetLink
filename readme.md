@@ -32,6 +32,7 @@ jettlink-jetlink.hf.space/1
 * **Endpoint:** `GET /<shortCode>`
 * **Description:** Resolves the unique short code and returns the original long URL destination.
 * **Status Code:** `200 OK` / `302 Found`
+* When someone tries to go to the short link, the api redirects the request to the original destination.
 
 **Request URL Example**
 ```
