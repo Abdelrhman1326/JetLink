@@ -54,6 +54,6 @@ DELETE https://jettlink-jetlink.hf.space/api/v1/urls/1
 ## Tech Stack
 
 * **Backend:** Spring Boot / JDK 25
-* **Database:** Supabase (PostgreSQL)
-* **Cache:** Redis / (Upstash)
+* **Database:** PostgreSQL (Supabase)
+* **Cache:** Redis (Upstash)
 * **Hosting/Deployment:** Hugging Face Spaces (`hf.space`)
